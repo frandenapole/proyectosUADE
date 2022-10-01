@@ -10,12 +10,9 @@ body{
     padding-bottom: 3em;
     min-height: 100vh;
 }
-.nav {
-
+/* .nav {
 width: 100%;
 height: 99px;
-left: 0px;
-top: 0px;
 background: #393D3F;
 }
 
@@ -25,7 +22,6 @@ background: #393D3F;
     list-style: none;
 }
 
-
 .nav ul li{
     margin-top: 40px ;
     margin-left: 1.5%;
@@ -33,13 +29,127 @@ background: #393D3F;
 }
 .nav ul li img{
     height: 150px;
-    margin-top: -55px;
+    
+} */
+
+.nav {
+    display: flex;
+    align-items: center;
+    background: #393D3F
+}
+
+.trigger {
+    display: none;
+}
+
+.hamburger {
+    cursor: pointer;
+    margin-left: 10px;
+    float: left;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 30px;
+    background-color: white;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 2rem;
+    position: relative;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Animaciones para rotarlo cuando se clickean */
+.trigger:checked ~ .hamburger span:first-child {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.trigger:checked ~ .hamburger span:last-child {
+    transform: rotate(-45deg);
+    top: -8px;
+}
+
+.trigger:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#opciones {
+    background-color: #393D3F;
+    width: 100vw;
+    padding: 30px 70px;
+    margin-top: 29px;
+    position: absolute;
+    left: -100vw;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+}
+
+/* Lo muestro cuando se clickeo el menu */
+.trigger:checked ~ #opciones {
+    left: 0 !important;
+}
+
+.menu {
+    cursor: pointer;
+}
+
+.nav label {
+    display:flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.nav ul {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    gap: 0.5rem;
+}
+
+.nav img {
+    height: 7rem;
+    width: 7rem;
+    filter: invert(100%);
+}
+
+.nav label li {
+    list-style: none;
 }
 
 
-.nav a{
+.nav label a{
     color: #FFFFFF;
     text-decoration: none;
+}
+
+@media (min-width: 1024px){
+    .hamburger {
+        display: none;
+    }
+
+    .nav {
+        justify-content: flex-end;
+        flex-direction: row-reverse;
+        overflow-x: hidden;
+    }
+
+    .nav ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #opciones {
+        position: inherit;
+        overflow: hidden;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        width: 50%;
+    }
+    
 }
 
 .nav a:visited{
@@ -61,9 +171,8 @@ background: #393D3F;
 
 
 .encabezado img {
-    
+    max-width: 100%;
     height: auto;
-    left: 30px;
 }
 
 .encabezado h1{
@@ -91,11 +200,13 @@ background: #393D3F;
     color:#4a4e69;
     justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
 }
 #caja{ 
     margin: 20px;
     margin-left: 1%;
     margin-top: 7%;
+    padding: 0.5rem;
     text-align: center;
     width: 500px;
     height: auto ;
@@ -110,10 +221,14 @@ background: #393D3F;
 
 
 #formulario{   
+    display:flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#formulario form {
     padding: 30px;
-    margin:auto;
-    margin-top: 50px;
-    width: 400px;
     background: #F8F9FA;
     border-radius: 5px;
     color:#4a4e69;
